@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         cacheDirectory=".phpunit.cache"
+         colors="true"
+         failOnWarning="true"
+         failOnRisky="true"
+         failOnNotice="true">
+    <php>
+        <!-- AC60-AC62 assert on exception-trace contents; the production
+             php.ini (GitHub Actions' default) sets this to 1, which strips
+             trace arguments and would let the redaction tests pass vacuously
+             (their teeth guard fails loud instead). INI_ALL, so PHPUnit can
+             pin it here for every environment. -->
+        <ini name="zend.exception_ignore_args" value="0"/>
+    </php>
+    <testsuites>
+        <testsuite name="tests">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+    <source>
+        <include>
+            <directory suffix=".php">src</directory>
+        </include>
+    </source>
+</phpunit>

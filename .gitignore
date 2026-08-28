@@ -1,0 +1,13 @@
+# Local-only working material — never publish.
+.claude/
+.dreamteam/
+CLAUDE.md
+
+# Composer / PHPUnit
+/vendor/
+composer.lock
+.phpunit.result.cache
+.phpunit.cache/
+
+# OS
+.DS_Store
